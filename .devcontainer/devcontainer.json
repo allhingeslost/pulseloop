@@ -1,13 +1,15 @@
 {
-  "name": "DevBox",
+  "name": "PulseLoop DevBox",
   "image": "ghcr.io/allhingeslost/devbox:latest",
+  "privileged": true,
+  "remoteUser": "vscode",
 
   "mounts": [
-    "source=${localEnv:HOME}/.gitconfig,target=/tmp/host-sync/.gitconfig,type=bind,readonly",
-    "source=${localEnv:HOME}/.config/gh,target=/tmp/host-sync/gh,type=bind,readonly",
-    "source=${localEnv:HOME}/.config/opencode,target=/tmp/host-sync/opencode,type=bind,readonly",
-    "source=${localEnv:HOME}/.local/share/opencode,target=/tmp/host-sync/opencode-share,type=bind,readonly"
+    "source=${localEnv:HOME}/.gitconfig,target=/tmp/setup/.gitconfig,type=bind,readonly",
+    "source=${localEnv:HOME}/.config/gh,target=/tmp/setup/gh,type=bind,readonly",
+    "source=${localEnv:HOME}/.config/opencode,target=/tmp/setup/opencode-config,type=bind,readonly",
+    "source=${localEnv:HOME}/.local/share/opencode,target=/tmp/setup/opencode-share,type=bind,readonly"
   ],
 
-  "postStartCommand": "bash .devcontainer/sync-config.sh"
+  "postStartCommand": "bash .devcontainer/setup.sh"
 }
