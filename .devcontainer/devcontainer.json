@@ -1,8 +1,12 @@
 {
-  "name": "PulseLoop DevBox",
+  "name": "DevBox",
   "image": "ghcr.io/allhingeslost/devbox:latest",
   "privileged": true,
   "remoteUser": "vscode",
+
+  "runArgs": [
+    "--network=host"
+  ],
 
   "mounts": [
     "source=${localEnv:HOME}/.gitconfig,target=/tmp/setup/.gitconfig,type=bind,readonly",
